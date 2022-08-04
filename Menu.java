@@ -10,11 +10,13 @@ public class Menu extends World
 {
     flecha forma = new flecha();
     private int opcion = 0;
-    
+    GreenfootSound GameMusic = new GreenfootSound("musica.wav");
     public Menu()
     {    
         super(800, 500, 1); 
         construir_mundo();
+        GameMusic.setVolume(40);
+        
     }
     
     private void construir_mundo(){
@@ -22,6 +24,7 @@ public class Menu extends World
     }
     
     public void act(){
+        GameMusic.playLoop();
         if(Greenfoot.isKeyDown("UP") && opcion != 0){opcion++;}
         if(Greenfoot.isKeyDown("Down") && opcion != 1){opcion--;}
         
@@ -33,10 +36,13 @@ public class Menu extends World
         if(Greenfoot.isKeyDown("SPACE") || Greenfoot.isKeyDown("ENTER")){
             switch(opcion){
                 case 0:
+                    GameMusic.stop();
                     Greenfoot.setWorld(new MyWorld());
                     break;
                 case 1:
+                    GameMusic.stop();
                     Greenfoot.stop();
+                    break;
             }
         }
     }

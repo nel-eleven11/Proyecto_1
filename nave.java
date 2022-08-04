@@ -9,9 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class nave extends Actor
 {
     private int velocidad;
-    
+    GreenfootSound GameMusic = new GreenfootSound("musica.wav");
     public nave(int v){
         velocidad = v;
+        GameMusic.setVolume(40);
+        GameMusic.playLoop();
     }
     
     public void act()
@@ -38,7 +40,6 @@ public class nave extends Actor
         }
         
         explotar();
-        //explotar_2();
     }
     public void explotar(){
         Actor estrellar = getOneIntersectingObject(meteorito.class);
@@ -47,6 +48,7 @@ public class nave extends Actor
             Greenfoot.playSound("explosion.mp3");
             getWorld().removeObject(estrellar);
             getWorld().removeObject(this);
+            GameMusic.stop();
             Greenfoot.stop();
         }
         else{
@@ -56,6 +58,7 @@ public class nave extends Actor
               Greenfoot.playSound("explosion.mp3");
               getWorld().removeObject(estrellar_2);
               getWorld().removeObject(this);
+              GameMusic.stop();
               Greenfoot.stop();
             }
         }

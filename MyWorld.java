@@ -17,6 +17,7 @@ public class MyWorld extends World
     private nave alax;
     private int num_obstaculos;
     private int num_obstaculos_2;
+    //GreenfootSound GameMusic = new GreenfootSound("musica.wav");
     public MyWorld()
     {       
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -33,9 +34,11 @@ public class MyWorld extends World
         addObject(alax, 100, 250);
         addObject(Nivel, 100, 50);
         addObject(Puntos, 100, 20);
+        
+        //GameMusic.setVolume(40);
+        //GameMusic.playLoop();
     }
     public void act(){
-        //Greenfoot.playSound("musica.wav"); la musica no funciono
         aumentar_dificultad();
         aniadir_obstaculos();
         aniadir_obstaculos_2();
